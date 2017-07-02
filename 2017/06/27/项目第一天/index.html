@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/27/项目第一天/index.html">
 <meta property="og:site_name" content="凛冬将至">
 <meta property="og:description" content="http协议是无状态的http协议中，服务器端不会记录浏览器的状态，也就是说每次会话的状态仅限于当次请求内容，下一次请求的时候，服务器就又会将浏览当做一个新的会话对象来处理了会话特别短暂，只能维持在一次请求内">
-<meta property="og:updated_time" content="2017-06-27T14:00:37.210Z">
+<meta property="og:updated_time" content="2017-06-29T12:56:52.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目第一天">
 <meta name="twitter:description" content="http协议是无状态的http协议中，服务器端不会记录浏览器的状态，也就是说每次会话的状态仅限于当次请求内容，下一次请求的时候，服务器就又会将浏览当做一个新的会话对象来处理了会话特别短暂，只能维持在一次请求内">
@@ -206,6 +206,18 @@
 <p>一个域名下的cookie是在该域名下面所有的页面中都可以使用的！</p>
 <p>www.studyit.com<br>www.studyit.com/dashboard/index<br>www.studyit.com/teacer/add</p>
 <p>当前域名中所有的cookie会伴随着每一次请求发送给服务器！！！</p>
+<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><p>session是服务器端的一个存储空间<br>session中划分了一个个的小空间，每一个小空间都会有一个sessionid</p>
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><p>同源策略</p>
+<p>协议  域名  端口号</p>
+<p><a href="http://studyit.com" target="_blank" rel="external">http://studyit.com</a><br><a href="http://www.studyit.com" target="_blank" rel="external">http://www.studyit.com</a></p>
+<p>在ajax请求中，如果所在的网页的域名和要请求的数据的域名产生的跨域，那么XHR对象的请求，会因为浏览器的同源策略而被阻断</p>
+<h2 id="ajax-请求中跨域问题的解决方案"><a href="#ajax-请求中跨域问题的解决方案" class="headerlink" title="ajax 请求中跨域问题的解决方案"></a>ajax 请求中跨域问题的解决方案</h2><p>1.jsonp<br>返回的数据格式：   函数名({})</p>
+<p>2.后台给响应头加上<br>Access-Control-Allow-Origin: *</p>
+<p>3.反向代理<br>3.1打开httpd.conf<br>找到如下两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#LoadModule proxy_module modules/mod_proxy.so</div><div class="line">#LoadModule proxy_http_module modules/mod_proxy_http.so</div></pre></td></tr></table></figure></p>
+<p>去掉前面的#，变成如下形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LoadModule proxy_module modules/mod_proxy.so</div><div class="line">LoadModule proxy_http_module modules/mod_proxy_http.so</div></pre></td></tr></table></figure></p>
+<p>3.2打开httpd-vhosts.conf<br>找到要配置的域名的节点<br>在virtualhost 节点中新增如下两行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ProxyRequests off</div><div class="line">ProxyPass /api http://api.botue.com</div></pre></td></tr></table></figure>
+<p><a href="http://studyit.com" target="_blank" rel="external">http://studyit.com</a>    在这个域名中要发送一个ajax请求<br><a href="http://api.botue.com" target="_blank" rel="external">http://api.botue.com</a></p>
 
       
 
@@ -309,6 +321,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/06/29/模块化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          模块化
+        
+      </div>
+    </a>
   
   
     <a href="/2017/06/26/博学谷项目/" id="article-nav-older" class="article-nav-link-wrap">
@@ -444,11 +465,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">案例</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">案例</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
